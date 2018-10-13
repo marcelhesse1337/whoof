@@ -20,9 +20,9 @@
     "sqlite3": "^4.0.2"
   },
   "scripts": {
-    "start": "concurrently \"npm run server --ignore client/\" \"npm run client\"",
-    "server": "babel-node server.js",
-    "client": "babel-node start-client.js",
+    "start": "node server.js",
+    "server": "node server.js",
+    "client": "node start-client.js",
     "dev": "concurrently \"nodemon --exec npm run server --ignore client/\" \"npm run client\""
   },
   "devDependencies": {
